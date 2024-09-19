@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration</title>
+    <link rel="icon" href="https://www.dsce.edu.in/images/favicon.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.header {
+    height: auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 2px;
+}
+
+.header img {
+    max-width: 100px;
+    height: auto;
+}
+
+
+.collname {
+    margin-left: 20px;
+}
+
+.collname p {
+    margin: 1px 0;
+}
+
+.collname p:first-child {
+    font-size: 30px;
+    font-weight: 550;
+    color: black;
+}
+
+.collname p:nth-child(2) {
+    font-size: 14px;
+    font-weight: 550;
+    color: #333;
+}
+
+.collname p:last-child {
+    font-size: 14px;
+    font-weight: 550;
+    color: #666;
+}
+
+.title h2 {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    background-color: #2979FF;
+}
+
+form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="file"] {
+    padding: 3px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+button[type="submit"] {
+    background-color: #2979FF;
+    color: white;
+    width: 120px;
+    border: none;
+    padding: 7px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #1e68d0;
+}
+
+.course-item {
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+h5 {
+    margin: 0 0 10px;
+    color: #666;
+    font-size: 16px;
+}
+
+.mandatory {
+    margin: 0px 0 25px;
+}
+
+.elective {
+    margin: 25px 0 0;
+}
+
+
+#courseList {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+#courseList .course-item {
+    display: flex;
+    align-items: center;
+}
+
+#courseList .course-item label {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#signature {
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        height: auto;
+        padding: 15px;
+    }
+
+    .header img {
+        max-width: 80px;
+    }
+
+    .collname p:first-child {
+        font-size: 24px;
+    }
+
+    .collname p:nth-child(2),
+    .collname p:last-child {
+        font-size: 12px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .title h2 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .header img {
+        max-width: 50px;
+    }
+
+    .collname {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .collname p:first-child {
+        font-size: 17px;
+    }
+
+    .collname p:nth-child(2),
+    .collname p:last-child {
+        font-size: 10px;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    textarea,
+    select,
+    input[type="file"] {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button[type="submit"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .title h2 {
+        font-size: 12px;
+    }
+
+    h5 {
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="logo_processed.jpeg" alt="DSCE Logo">
+        <div class="collname">
+            <center>
+                <p>Dayananda Sagar College of Engineering</p>
+                <p>(An Autonomous Institute, affiliated to VTU, Belagavi, Approved by AICTE and ISO.)</p>
+                <p>Shavige Malleshwara Hills, Kumaraswamy Layout, Bengaluru-560078</p>
+            </center>
+        </div>
+    </div>
+    <div class="title">
+        <h2>COURSE REGISTRATION FORM- Odd Semester (2024-25)</h2>
+    </div>
+
+    <form id="myForm" enctype="multipart/form-data">
+
+        <label for="program">Program:</label>
+        <select id="program" name="program" required>
+            <option value="">--Select--</option>
+            <option value="AE">Aeronautical Engineering</option>
+            <option value="AI">Artificial Intelligence and Machine Learning</option>
+            <option value="AU">Automobile Engineering</option>
+            <option value="BT">Biotechnology</option>
+            <option value="CH">Chemical Engineering</option>
+            <option value="CV">Civil Engineering</option>
+            <option value="CB">Computer Science and Business system</option>
+            <option value="CG">Computer Science and Design</option>
+            <option value="CS">Computer Science and Engineering</option>
+            <option value="CY">Computer Science and Engineering (Cyber Security)</option>
+            <option value="CD">Computer Science and Engineering (Data Science)</option>
+            <option value="IC">Computer Science and Engineering (IoT, Cyber Security, Data Science)</option>
+            <option value="EE">Electrical and Electronics Engineering</option>
+            <option value="EC">Electronics and Communication Engineering</option>
+            <option value="EI">Electronics and Instrumentation Engineering</option>
+            <option value="ET">Electronics and Telecommunication Engineering</option>
+            <option value="IS">Information Science and Engineering</option>
+            <option value="ME">Mechanical Engineering</option>
+            <option value="MD">Medical Electronics Engineering</option>
+            <option value="RI">Robotics and Artificial Intelligence</option>
+        </select>
+
+        <label for="name">Name of the Candidate:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+
+        <label for="usn">USN:</label>
+        <input type="text" id="usn" name="usn" placeholder="1DS23CG001" required>
+
+        <label for="semester">Semester:</label>
+        <select id="semester" name="semester" required>
+            <option value="">--Select--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+
+        <label for="contact">Contact No.:</label>
+        <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="1234567890" required>
+
+        <label for="email">E-mail ID:</label>
+        <input type="email" id="email" name="email" placeholder="USN@dsce.edu.in" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+
+        <h3>Select Course for the Odd Semester (2024-25)</h3>
+        <div id="courseList">
+            <div class="mandatory">
+                <h5>These courses are mandatory.</h5>
+                <div class="course-item">
+                    <input type="checkbox" id="course1" name="course" value="22MAT31A" checked disabled>
+                    <label for="course1">MATHEMATICS FOR COMPUTER ENGINEERS (VSO) - 22MAT31A</label>
+                </div>
+                <div class="course-item">
+                    <input type="checkbox" id="course2" name="course" value="22CG32" checked disabled>
+                    <label for="course2">DATA STRUCTURES AND APPLICATIONS USING C - 22CG32</label>
+                </div>
+                <div class="course-item">
+                    <input type="checkbox" id="course3" name="course" value="22CG33" checked disabled>
+                    <label for="course3">DESIGN THINKING AND UX - 22CG33</label>
+                </div>
+                <div class="course-item">
+                    <input type="checkbox" id="course4" name="course" value="22CG34" checked disabled>
+                    <label for="course4">JAVA PROGRAMMING - 22CG34</label>
+                </div>
+                <div class="course-item">
+                    <input type="checkbox" id="course5" name="course" value="22CGL35" checked disabled>
+                    <label for="course5">JAVA PROGRAMMING LABORATORY - 22CGL35</label>
+                </div>
+                <div class="course-item">
+                    <input type="checkbox" id="course6" name="course" value="22CG361" checked disabled>
+                    <label for="course6">OPERATING SYSTEM WITH PROGRAMMING - 22CG361</label>
+                </div>
+                <div class="course-item">
+                    <input type="checkbox" id="course7" name="course" value="22SCR37" checked disabled>
+                    <label for="course7">SOCIAL CONNECT AND RESPONSIBILITY (SCR) - 22SCR37</label>
+                </div>
+                <div class="course-item">
+                    <input type="checkbox" id="course8" name="course" value="22CGL382" checked disabled>
+                    <label for="course8">WEB PROGRAMMING LABORATORY - 22CGL382</label>
+                </div>
+            </div>
+            <hr>
+            <div class="elective">
+                <h5>Select any one of the course</h5>
+                <div class="course-item">
+                    <input type="radio" id="course9" name="course" value="22PE84" class="elective-checkbox" required>
+                    <label for="course9">PHYSICAL EDUCATION (PE) (SPORTS AND ATHLETICS) - 22PE84</label>
+                </div>
+                <div class="course-item">
+                    <input type="radio" id="course10" name="course" value="22YO84" class="elective-checkbox">
+                    <label for="course10">YOGA - 22YO84</label>
+                </div>
+                <div class="course-item">
+                    <input type="radio" id="course11" name="course" value="22NS84" class="elective-checkbox">
+                    <label for="course11">NATIONAL SERVICE SCHEME (NSS) - 22NS84</label>
+                </div>
+                <div class="course-item">
+                    <input type="radio" id="course12" name="course" value="22CA84" class="elective-checkbox">
+                    <label for="course12">CULTURAL ACTIVITY - 22CA84</label>
+                </div>
+            </div>
+        </div>
+
+        <label for="signature">Signature (Upload as File):</label>
+        <input type="file" id="signature" name="signature" accept=".png, .jpg, .jpeg, .pdf" required>
+
+        <button type="submit" id="submit">Submit</button>
+    </form>
+
+    <!-- <div id="notificationModal" class="modal"></div>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Your response has been recorded.</p>
+        </div>
+    </div> -->
+
+    <script>
+        document.getElementById("program").addEventListener("change", function() {
+    const program = this.value;
+
+    const courses = [
+        { checkbox: document.getElementById("course1"), label: document.querySelector("label[for='course1']") },
+        { checkbox: document.getElementById("course2"), label: document.querySelector("label[for='course2']") },
+        { checkbox: document.getElementById("course3"), label: document.querySelector("label[for='course3']") },
+        { checkbox: document.getElementById("course4"), label: document.querySelector("label[for='course4']") },
+        { checkbox: document.getElementById("course5"), label: document.querySelector("label[for='course5']") },
+        { checkbox: document.getElementById("course6"), label: document.querySelector("label[for='course6']") },
+        { checkbox: document.getElementById("course7"), label: document.querySelector("label[for='course7']") },
+        { checkbox: document.getElementById("course8"), label: document.querySelector("label[for='course8']") }
+    ];
+
+    let courseData = [];
+
+    if (["CB", "CG", "CS", "CY", "CD", "IC", "AI", "RI"].includes(program)) {
+        courseData = [
+            { value: "22MAT31A", text: "MATHEMATICS FOR COMPUTER ENGINEERS (VSO) - 22MAT31A" },
+            { value: "22CG32", text: "DATA STRUCTURES AND APPLICATIONS USING C - 22CG32" },
+            { value: "22CG33", text: "DESIGN THINKING AND UX - 22CG33" },
+            { value: "22CG34", text: "JAVA PROGRAMMING - 22CG34" },
+            { value: "22CGL35", text: "JAVA PROGRAMMING LABORATORY - 22CGL35" },
+            { value: "22CG361", text: "OPERATING SYSTEM WITH PROGRAMMING - 22CG361" },
+            { value: "22SCR37", text: "SOCIAL CONNECT AND RESPONSIBILITY (SCR) - 22SCR37" },
+            { value: "22CGL382", text: "WEB PROGRAMMING LABORATORY - 22CGL382" }
+        ];
+    } else if (["AE", "AU", "BT", "CH", "CV", "EE", "EC", "EI", "ET", "IS", "ME", "MD"].includes(program)) {
+        courseData = [
+            { value: "22AE31A", text: "AERODYNAMICS - 22AE31A" },
+            { value: "22AU32", text: "VEHICLE DYNAMICS - 22AU32" },
+            { value: "22BT31A", text: "MOLECULAR BIOLOGY - 22BT31A" },
+            { value: "22CH31A", text: "CHEMICAL PROCESS PRINCIPLES - 22CH31A" },
+            { value: "22CV32", text: "STRUCTURAL ANALYSIS - 22CV32" },
+            { value: "22EE33", text: "CONTROL SYSTEMS - 22EE33" },
+            { value: "22EC32", text: "MICROPROCESSORS - 22EC32" },
+            { value: "22ME33", text: "MACHINE DESIGN - 22ME33" }
+        ];
+    }
+
+    courseData.forEach((course, index) => {
+        courses[index].checkbox.value = course.value;
+        courses[index].label.textContent = course.text;
+    });
+});
+
+let url = 'https://script.google.com/macros/s/AKfycbz96diXyyvvCCBEJNJUjri9aCD_eMsxbgfjiYyM0NKtYdhPO4XmFyFxB7hSqyOUZTEm/exec';
+let form = document.getElementById('myForm');
+const fileInput = document.getElementById('signature');
+form.addEventListener('submit', (e) => {
+
+    e.preventDefault();
+    document.getElementById("submit").innerText = "Submitting...";
+    let data = new FormData(form);
+
+    data.append('file', fileInput.files[0]);
+
+    fetch(url, {
+        method: "POST",
+        body: data
+    })
+        .then((res) => res.text())
+        .then((txt) => {
+            document.getElementById("submit").innerText = "Submit";
+            form.reset();
+            alert(txt);
+            setTimeout(function () {
+                const start = window.scrollY;
+                const duration = 500;
+                const startTime = performance.now();
+
+                function scrollToTop(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+                    const scrollPosition = start * (1 - progress);
+
+                    window.scrollTo(0, scrollPosition);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(scrollToTop);
+                    }
+                }
+
+                requestAnimationFrame(scrollToTop);
+            }, 200);
+        })
+    .catch((error) => {
+        document.getElementById("submit").innerText = "Submit";
+        console.error("Error:", error);
+        alert("There was an error submitting the form.");
+    });
+});
+
+    </script>
+</body>
+
+</html>
